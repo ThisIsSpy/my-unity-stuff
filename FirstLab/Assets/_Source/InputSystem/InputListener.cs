@@ -17,6 +17,7 @@ namespace InputSystem
                 ReadJumpInput();
                 ReadMoveInput();
                 ReadShootInput();
+                ReadRotateInput();
             }
             ReadDisableInput();
         }
@@ -47,6 +48,10 @@ namespace InputSystem
                 Debug.Log("q input");
                 _invoker.InvokeShoot();
             }
+        }
+        private void ReadRotateInput()
+        {
+            _invoker.InvokeRotate();
         }
         public void SetInvoker(PlayerInvoker invoker)
         {

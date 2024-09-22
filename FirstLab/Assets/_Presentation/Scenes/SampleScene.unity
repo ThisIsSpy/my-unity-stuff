@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MovementSpeed>k__BackingField: 1.2
-  <RotationSpeed>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 1
   <JumpForce>k__BackingField: 9.5
   <Bullet>k__BackingField: {fileID: 1638167588389800266, guid: 9a4c9c343b33c1b47a739dc58b160d8a, type: 3}
 --- !u!54 &1901837076

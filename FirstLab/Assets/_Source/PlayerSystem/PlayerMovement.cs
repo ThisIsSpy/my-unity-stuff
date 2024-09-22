@@ -23,6 +23,7 @@ public class PlayerMovement
     }
     public void Rotate(Rigidbody rb, float rotationSpeed)
     {
-
+        float xMove = Input.GetAxisRaw("Mouse X");
+        rb.transform.Rotate(0, xMove, 0);
     }
 }
