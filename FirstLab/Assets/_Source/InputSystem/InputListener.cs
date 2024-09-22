@@ -16,6 +16,7 @@ namespace InputSystem
             {
                 ReadJumpInput();
                 ReadMoveInput();
+                ReadShootInput();
             }
             ReadDisableInput();
         }
@@ -43,6 +44,7 @@ namespace InputSystem
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                Debug.Log("q input");
                 _invoker.InvokeShoot();
             }
         }

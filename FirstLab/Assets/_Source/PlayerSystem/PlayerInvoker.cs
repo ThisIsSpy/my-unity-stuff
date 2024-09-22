@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerInvoker
 {
     private PlayerMovement _playerMovement;
+    private PlayerCombat _playerCombat;
     private Player _player;
 
     public PlayerInvoker(Player player)
     {
         _playerMovement = new();
+        _playerCombat = new();
         _player = player;
     }
     public void InvokeJump()
@@ -26,6 +28,7 @@ public class PlayerInvoker
     }
     public void InvokeShoot()
     {
-        _playerMovement.Shoot();
+        Debug.Log("shoot invoked");
+        _playerCombat.Shoot(_player.Bullet, _player);
     }
 }
