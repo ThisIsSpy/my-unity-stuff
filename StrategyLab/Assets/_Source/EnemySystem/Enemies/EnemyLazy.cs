@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EnemySystem.Enemies{
+namespace EnemySystem.Enemies
+{
     
     public class EnemyLazy : EnemyTemplate
     {
+        private int triggerIsLazyAttackID;
         public void Construct(Animator enemyAnimator)
         {
             EnemyAnimator = enemyAnimator;
+            triggerIsLazyAttackID = Animator.StringToHash("IsLazyAttack");
         }
         private void OnEnable()
         {
@@ -17,7 +20,7 @@ namespace EnemySystem.Enemies{
         protected override void ExecuteAttack()
         {
             if (gameObject.activeSelf == true)
-                EnemyAnimator.SetTrigger("IsLazyAttack");
+                EnemyAnimator.SetTrigger(triggerIsLazyAttackID);
         }
     }
     

@@ -5,6 +5,7 @@ using EnemySystem.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core
 {
@@ -38,7 +39,7 @@ namespace Core
             attackPerformer = new(attackStrategies);
             for(int i = 0; i < setterList.Count; i++)
             {
-                setterList[i].Construct(i, attackPerformer);
+                setterList[i].Construct(i, attackPerformer, setterList[i].gameObject.GetComponent<Button>());
             }
             foreach(EnemyTemplate enemy in enemyList)
             {
@@ -60,7 +61,7 @@ namespace Core
             }
             for(int i = 0; i < enemySetterList.Count; i++)
             {
-                enemySetterList[i].Construct(i, enemyList);
+                enemySetterList[i].Construct(i, enemyList, enemySetterList[i].gameObject.GetComponent<Button>());
             }
             inputListener.Construct(attackPerformer);
         }

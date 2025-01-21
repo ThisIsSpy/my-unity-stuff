@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace EnemySystem{
     
@@ -8,6 +9,7 @@ namespace EnemySystem{
     {
         private int index;
         private List<EnemyTemplate> enemyList;
+        private Button button;
 
         public int Index { get { return index; }
             private set 
@@ -16,24 +18,22 @@ namespace EnemySystem{
             }
         }
 
-        public void Construct(int index, List<EnemyTemplate> enemyList)
+        public void Construct(int index, List<EnemyTemplate> enemyList, Button button)
         {
             this.enemyList = enemyList;
+            this.button = button;
             Index = index;
+            this.button.onClick.AddListener(OnButtonPress);
         }
-
+        private void OnDestroy()
+        {
+            button.onClick.RemoveListener(OnButtonPress);
+        }
         public void OnButtonPress()
         {
             for (int i = 0; i < enemyList.Count; i++)
             {
-                if(i== index)
-                {
-                    enemyList[i].gameObject.SetActive(true);
-                }
-                else
-                {
-                    enemyList[i].gameObject.SetActive(false);
-                }
+                enemyList[i].gameObject.SetActive(i == index);
             }
         }
     }

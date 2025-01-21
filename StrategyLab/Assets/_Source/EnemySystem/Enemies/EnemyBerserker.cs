@@ -7,9 +7,13 @@ namespace EnemySystem.Enemies
     
     public class EnemyBerserker : EnemyTemplate
     {
+        private int triggerIsBerserkerAttackID;
+        private int triggerIsBerserkerAttackStopID;
         public void Construct(Animator enemyAnimator)
         {
             EnemyAnimator = enemyAnimator;
+            triggerIsBerserkerAttackID = Animator.StringToHash("IsBerserkerAttack");
+            triggerIsBerserkerAttackStopID = Animator.StringToHash("IsBerserkerAttackStop");
         }
         private void OnEnable()
         {
@@ -17,12 +21,12 @@ namespace EnemySystem.Enemies
         }
         private void OnDisable()
         {
-            EnemyAnimator.SetTrigger("IsBerserkerAttackStop");
+            EnemyAnimator.SetTrigger(triggerIsBerserkerAttackStopID);
         }
         protected override void ExecuteAttack()
         {
             if(gameObject.activeSelf == true)
-            EnemyAnimator.SetTrigger("IsBerserkerAttack");
+            EnemyAnimator.SetTrigger(triggerIsBerserkerAttackID);
         }
     }
     

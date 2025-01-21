@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AttackSystem
 {
@@ -9,6 +10,7 @@ namespace AttackSystem
     {
         private int index;
         private AttackPerformer performer;
+        private Button button;
 
         public int Index
         {
@@ -30,12 +32,17 @@ namespace AttackSystem
             }
         }
 
-        public void Construct(int index, AttackPerformer performer)
+        public void Construct(int index, AttackPerformer performer, Button button)
         {
             this.performer = performer;
+            this.button = button;
             Index = index;
+            this.button.onClick.AddListener(OnButtonPress);
         }
-
+        private void OnDestroy()
+        {
+            button.onClick.RemoveListener(OnButtonPress);
+        }
         public void OnButtonPress()
         {
             performer.SetCurrentStrategy(index);

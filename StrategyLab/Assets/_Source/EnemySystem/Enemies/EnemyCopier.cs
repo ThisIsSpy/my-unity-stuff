@@ -8,17 +8,24 @@ namespace EnemySystem.Enemies
     
     public class EnemyCopier : EnemyTemplate
     {
-
+        private int triggerIsCopierAttackID;
+        private AttackPerformer attackPerformer;
         public void Construct(Animator enemyAnimator, AttackPerformer attackPerformer)
         {
             EnemyAnimator = enemyAnimator;
-            attackPerformer.OnStrategyExecute += EnemyMethod;
+            this.attackPerformer = attackPerformer;
+            this.attackPerformer.OnStrategyExecute += EnemyMethod;
+            triggerIsCopierAttackID = Animator.StringToHash("IsCopierAttack");
+        }
+        private void OnDestroy()
+        {
+            attackPerformer.OnStrategyExecute -= EnemyMethod;
         }
         protected override void ExecuteAttack()
         {
             if(gameObject.activeSelf == true)
             {
-                EnemyAnimator.SetTrigger("IsCopierAttack");
+                EnemyAnimator.SetTrigger(triggerIsCopierAttackID);
             }
         }
     }
