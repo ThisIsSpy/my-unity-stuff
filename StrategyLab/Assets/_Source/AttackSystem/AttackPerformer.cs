@@ -9,6 +9,7 @@ namespace AttackSystem
     {
         private readonly List<IAttackStrategy> strategyList;
         private IAttackStrategy currentStrategy;
+        public event System.Action OnStrategyExecute;
 
         public List<IAttackStrategy> StrategyList { get { return strategyList; } }
 
@@ -22,6 +23,7 @@ namespace AttackSystem
             if(currentStrategy != null)
             {
                 currentStrategy.ExecuteStrategy();
+                OnStrategyExecute?.Invoke();
             }
             else
             {
