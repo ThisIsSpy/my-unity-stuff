@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedHotdogSO: {fileID: 11400000, guid: 7e7090ed7741cdf48a2fa5b72ebd93ec, type: 2}
   selectedDecoratorSO: {fileID: 11400000, guid: 5fd91785b2f37a247a1670edf12e8be6, type: 2}
-  isDecoratorNeeded: 0
+  isDecoratorNeeded: 1
 --- !u!4 &104910119
 Transform:
   m_ObjectHideFlags: 0
