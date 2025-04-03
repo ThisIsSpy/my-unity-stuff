@@ -18,6 +18,12 @@ namespace Panels
                 {typeof(SecondPanelController), secondPanelController as T },
             };
             InitStates();
+            ChangeState<MainPanelController>();
+
+            //mainPanelController.MainPanelView.OnButtonClicked += GoToSecondPanelState;
+            //secondPanelController.SecondPanelView.OnButtonClicked += GoToMainPanelState;
+            mainPanelController.MainPanelView.Construct(this);
+            secondPanelController.SecondPanelView.Construct(this);
         }
 
         private void InitStates()
@@ -38,6 +44,16 @@ namespace Panels
                 return true;
             }
             return false;
+        }
+
+        private void GoToMainPanelState()
+        {
+            ChangeState<MainPanelController>();
+        }
+
+        private void GoToSecondPanelState()
+        {
+            ChangeState<SecondPanelController>();
         }
     }
 }

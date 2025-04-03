@@ -4,18 +4,18 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Score
 {
     
     public class ScoreCounter : MonoBehaviour
     {
-        [SerializeField] private bool IsPlayerPrefsSave = true;
         private TextMeshProUGUI scoreText;
         private Button collectButton;
         private int score;
         public int SavedScore { get; private set; }
-        private ServiceLocator serviceLocator;
+        private ISaver saver;
 
         public int Score { get { return score; } private set { score = value; scoreText.text = score.ToString(); } }
 
@@ -27,6 +27,12 @@ namespace Score
             Score = 0;
             Subscribe();
             StartCoroutine(ScoreAddCoroutine());
+        }
+
+        [Inject]
+        public void Construct(ISaver saver)
+        {
+            this.saver = saver;
         }
 
         private void Subscribe()
@@ -47,22 +53,8 @@ namespace Score
 
         void OnDisable()
         {
-            if(IsPlayerPrefsSave)
-            {
-                if (!serviceLocator.GetService(out PlayerPrefsSaver saver)) { Debug.Log("couldn't find player prefs saver"); return; }
-                else saver.SaveScore();
-            }
-            else
-            {
-                if (!serviceLocator.GetService(out JSONSaver saver)) { Debug.Log("couldn't find json saver"); return; }
-                else saver.SaveScore(Path.Combine(Application.streamingAssetsPath, "Settings.json"));
-            }
+            saver.SaveScore(Path.Combine(Application.streamingAssetsPath, "Settings.json"));
             StopAllCoroutines();
-        }
-
-        public void InjectServiceLocator(ServiceLocator serviceLocator)
-        {
-            this.serviceLocator = serviceLocator;
         }
 
         public void CollectScore()

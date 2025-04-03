@@ -7,23 +7,21 @@ namespace Panels.UIStates
 {
     public class MainPanelController : UIController
     {
-        private readonly MainPanelView mainPanelView;
+        public MainPanelView MainPanelView { get; private set; }
 
         public MainPanelController(MainPanelView mainPanelView)
         {
-            this.mainPanelView = mainPanelView;
+            MainPanelView = mainPanelView;
         }
 
         public override void Enter()
         {
-            //mainPanelView.gameObject.SetActive(true);
-            mainPanelView.GetComponentInChildren<Button>().interactable = true;
+            MainPanelView.GetComponentInChildren<Button>().interactable = true;
         }
 
         public override void Exit()
         {
-            //mainPanelView.gameObject.SetActive(false);
-            mainPanelView.GetComponentInChildren<Button>().interactable = false;
+            MainPanelView.GetComponentInChildren<Button>().interactable = false;
         }
     }
 }

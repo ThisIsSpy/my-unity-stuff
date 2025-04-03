@@ -8,42 +8,38 @@ namespace Panels.UIStates
 {
     public class SecondPanelController : UIController
     {
-        private readonly SecondPanelView secondPanelView;
-        private readonly AudioClip openPanelClip;
-        private readonly AudioClip closePanelClip;
-        private readonly ServiceLocator serviceLocator;
+        public SecondPanelView SecondPanelView { get; private set; }
+        private readonly SoundListSO soundListSO;
+        private readonly IFadeService fadeService;
+        private readonly ISoundPlayer soundPlayer;
 
-        public SecondPanelController(SecondPanelView secondPanelView, AudioClip openPanelClip, AudioClip closePanelClip, ServiceLocator serviceLocator)
+        public SecondPanelController(SecondPanelView secondPanelView, SoundListSO soundListSO, IFadeService fadeService, ISoundPlayer soundPlayer)
         {
-            this.secondPanelView = secondPanelView;
-            this.openPanelClip = openPanelClip;
-            this.closePanelClip = closePanelClip;
-            this.serviceLocator = serviceLocator;
+            SecondPanelView = secondPanelView;
+            this.soundListSO = soundListSO;
+            this.fadeService = fadeService;
+            this.soundPlayer = soundPlayer;
         }
 
         public override void Enter()
         {
-            secondPanelView.gameObject.SetActive(true);
-            if (!serviceLocator.GetService(out FadeService service)) Debug.Log("couldn't locate fade service");
-            else service.FadeIn(secondPanelView.GetComponent<Image>(), 2f);
-            if (!serviceLocator.GetService(out SoundPlayer service2)) Debug.Log("couldn't locate sound player");
-            else service2.PlayOpenSound(openPanelClip);
+            SecondPanelView.gameObject.SetActive(true);
+            fadeService.FadeIn(SecondPanelView.GetComponent<Image>(), 2f);
+            soundPlayer.PlayOpenSound(soundListSO.OpenPanelSound);
 
         }
 
         public override void Exit()
         {
-            secondPanelView.StartCoroutine(ExitCoroutine());
+            SecondPanelView.StartCoroutine(ExitCoroutine());
         }
 
         private IEnumerator ExitCoroutine()
         {
-            if (!serviceLocator.GetService(out FadeService service)) Debug.Log("couldn't locate fade service");
-            else service.FadeOut(secondPanelView.GetComponent<Image>(), 2f);
-            if (!serviceLocator.GetService(out SoundPlayer service2)) Debug.Log("couldn't locate sound player");
-            else service2.PlayCloseSound(closePanelClip);
+            fadeService.FadeOut(SecondPanelView.GetComponent<Image>(), 2f);
+            soundPlayer.PlayCloseSound(soundListSO.ClosePanelSound);
             yield return new WaitForSeconds(2f);
-            secondPanelView.gameObject.SetActive(false);
+            SecondPanelView.gameObject.SetActive(false);
         }
     }
 }

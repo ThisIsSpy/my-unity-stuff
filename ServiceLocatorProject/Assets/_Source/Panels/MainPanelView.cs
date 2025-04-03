@@ -1,9 +1,11 @@
 using Panels.Statemachine;
 using Panels.UIStates;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Panels
 {

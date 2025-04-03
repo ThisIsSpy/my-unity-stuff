@@ -10,14 +10,13 @@ namespace Services
     {
         private readonly Dictionary<Type, object> services;
 
-        public ServiceLocator(FadeService fadeService, SoundPlayer soundPlayer, PlayerPrefsSaver playerPrefsSaver, JSONSaver jsonSaver)
+        public ServiceLocator(IFadeService fadeService, ISoundPlayer soundPlayer, ISaver saver)
         {
             services = new()
             {
-                {typeof(FadeService), fadeService },
-                {typeof(SoundPlayer), soundPlayer },
-                {typeof(PlayerPrefsSaver), playerPrefsSaver },
-                {typeof(JSONSaver), jsonSaver },
+                {typeof(IFadeService), fadeService },
+                {typeof(ISoundPlayer), soundPlayer },
+                {typeof(ISaver), saver },
             };
         }
 
@@ -31,13 +30,6 @@ namespace Services
                 return true;
             }
         }
-
-        //public T GetService<T>()
-        //{
-        //    if (!services.TryGetValue(typeof(T), out object objService))
-        //        throw new KeyNotFoundException("death");
-        //    return (T)objService;
-        //}
     }
 
 }

@@ -37,18 +37,17 @@ namespace Core
             soundPlayer = new(audioSource);
             playerPrefsSaver = new(scoreCounter);
             jsonSaver = new(scoreCounter);
-            serviceLocator = new(fadeService, soundPlayer, playerPrefsSaver, jsonSaver);
-            scoreCounter.InjectServiceLocator(serviceLocator);
+            //serviceLocator = new(fadeService, soundPlayer, playerPrefsSaver, jsonSaver);
         }
 
         private void UIStatemachineSetup()
         {
             MainPanelController mainPanelController = new(mainPanelView);
-            SecondPanelController secondPanelController = new(secondPanelView, openPanelClip, closePanelClip, serviceLocator);
-            uiSwitcher = new UISwitcher<UIController>(mainPanelController, secondPanelController);
+            //SecondPanelController secondPanelController = new(secondPanelView, openPanelClip, closePanelClip, serviceLocator);
+            //uiSwitcher = new UISwitcher<UIController>(mainPanelController, secondPanelController);
             uiSwitcher.ChangeState<MainPanelController>();
-            mainPanelView.Construct(uiSwitcher);
-            secondPanelView.Construct(uiSwitcher);
+            //mainPanelView.Construct(uiSwitcher);
+            //secondPanelView.Construct(uiSwitcher);
         }
     }
     
