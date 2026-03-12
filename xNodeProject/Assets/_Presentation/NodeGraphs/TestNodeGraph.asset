@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6362523740692890564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5451ddd6661274545bdf095225ea08a3, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -232, y: -200}
+  ports:
+    keys:
+    - previousNode
+    - goodChoiceNextNode
+    - badChoiceNextNode
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -6362523740692890564}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: goodChoiceNextNode
+      _node: {fileID: -6362523740692890564}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -4078959140167647339}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: badChoiceNextNode
+      _node: {fileID: -6362523740692890564}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 8041607103372060167}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  goodChoiceNextNode: {fileID: 0}
+  badChoiceNextNode: {fileID: 0}
+--- !u!114 &-4078959140167647339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5451ddd6661274545bdf095225ea08a3, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 56, y: -360}
+  ports:
+    keys:
+    - previousNode
+    - goodChoiceNextNode
+    - badChoiceNextNode
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -4078959140167647339}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: goodChoiceNextNode
+        node: {fileID: -6362523740692890564}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: goodChoiceNextNode
+      _node: {fileID: -4078959140167647339}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: badChoiceNextNode
+      _node: {fileID: -4078959140167647339}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  goodChoiceNextNode: {fileID: 0}
+  badChoiceNextNode: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8da220c24c078448aca5044a3648056, type: 3}
+  m_Name: TestNodeGraph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -6362523740692890564}
+  - {fileID: -4078959140167647339}
+  - {fileID: 8041607103372060167}
+--- !u!114 &8041607103372060167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5451ddd6661274545bdf095225ea08a3, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 56, y: -8}
+  ports:
+    keys:
+    - previousNode
+    - goodChoiceNextNode
+    - badChoiceNextNode
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 8041607103372060167}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: badChoiceNextNode
+        node: {fileID: -6362523740692890564}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: goodChoiceNextNode
+      _node: {fileID: 8041607103372060167}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: badChoiceNextNode
+      _node: {fileID: 8041607103372060167}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  goodChoiceNextNode: {fileID: 0}
+  badChoiceNextNode: {fileID: 0}

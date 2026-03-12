@@ -1,0 +1,438 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2358660810126011565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5451ddd6661274545bdf095225ea08a3, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 56, y: -376}
+  ports:
+    keys:
+    - previousNode
+    - situationDescription
+    - firstChoice
+    - secondChoice
+    - firstChoiceNextNode
+    - secondChoiceNextNode
+    - canGoBack
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -2358660810126011565}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: firstChoiceNextNode
+        node: {fileID: 2312424636662238332}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: situationDescription
+      _node: {fileID: -2358660810126011565}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoice
+      _node: {fileID: -2358660810126011565}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoice
+      _node: {fileID: -2358660810126011565}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoiceNextNode
+      _node: {fileID: -2358660810126011565}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2321318804941696078}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoiceNextNode
+      _node: {fileID: -2358660810126011565}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2321318804941696078}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: canGoBack
+      _node: {fileID: -2358660810126011565}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  situationDescription: You checked your phone and you realise that you overslept.
+    What will you do?
+  firstChoice: Ignore shower and breakfast and go straight to your job
+  secondChoice: Make yourself breakfast
+  canGoBack: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c933db55d5793884c9c8c305c75604f9, type: 3}
+  m_Name: CardNodeGraph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 2312424636662238332}
+  - {fileID: -2358660810126011565}
+  - {fileID: 9047991172613304899}
+  - {fileID: 2321318804941696078}
+  current: {fileID: 2312424636662238332}
+--- !u!114 &2312424636662238332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5451ddd6661274545bdf095225ea08a3, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -264, y: -200}
+  ports:
+    keys:
+    - previousNode
+    - situationDescription
+    - firstChoice
+    - secondChoice
+    - firstChoiceNextNode
+    - secondChoiceNextNode
+    - canGoBack
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 2312424636662238332}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: firstChoiceNextNode
+        node: {fileID: 2321318804941696078}
+        reroutePoints: []
+      - fieldName: secondChoiceNextNode
+        node: {fileID: 2321318804941696078}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: situationDescription
+      _node: {fileID: 2312424636662238332}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoice
+      _node: {fileID: 2312424636662238332}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoice
+      _node: {fileID: 2312424636662238332}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoiceNextNode
+      _node: {fileID: 2312424636662238332}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -2358660810126011565}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoiceNextNode
+      _node: {fileID: 2312424636662238332}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 9047991172613304899}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: canGoBack
+      _node: {fileID: 2312424636662238332}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  situationDescription: You wake up. What is your first action?
+  firstChoice: Check thy phone
+  secondChoice: Take a shower
+  canGoBack: 0
+--- !u!114 &2321318804941696078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5451ddd6661274545bdf095225ea08a3, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 328, y: -184}
+  ports:
+    keys:
+    - previousNode
+    - situationDescription
+    - firstChoice
+    - secondChoice
+    - firstChoiceNextNode
+    - secondChoiceNextNode
+    - canGoBack
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 2321318804941696078}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: firstChoiceNextNode
+        node: {fileID: 9047991172613304899}
+        reroutePoints: []
+      - fieldName: firstChoiceNextNode
+        node: {fileID: -2358660810126011565}
+        reroutePoints: []
+      - fieldName: secondChoiceNextNode
+        node: {fileID: -2358660810126011565}
+        reroutePoints: []
+      - fieldName: secondChoiceNextNode
+        node: {fileID: 9047991172613304899}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: situationDescription
+      _node: {fileID: 2321318804941696078}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoice
+      _node: {fileID: 2321318804941696078}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoice
+      _node: {fileID: 2321318804941696078}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoiceNextNode
+      _node: {fileID: 2321318804941696078}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2312424636662238332}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoiceNextNode
+      _node: {fileID: 2321318804941696078}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2312424636662238332}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: canGoBack
+      _node: {fileID: 2321318804941696078}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  situationDescription: Game Over. I'm too lazy to continue
+  firstChoice: Start Over
+  secondChoice: Start Over
+  canGoBack: 1
+--- !u!114 &9047991172613304899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5451ddd6661274545bdf095225ea08a3, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 40, y: -8}
+  ports:
+    keys:
+    - previousNode
+    - situationDescription
+    - firstChoice
+    - secondChoice
+    - firstChoiceNextNode
+    - secondChoiceNextNode
+    - canGoBack
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 9047991172613304899}
+      _typeQualifiedName: xNodeProject.NodeModule.CardNode, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: secondChoiceNextNode
+        node: {fileID: 2312424636662238332}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: situationDescription
+      _node: {fileID: 9047991172613304899}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoice
+      _node: {fileID: 9047991172613304899}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoice
+      _node: {fileID: 9047991172613304899}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstChoiceNextNode
+      _node: {fileID: 9047991172613304899}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2321318804941696078}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: secondChoiceNextNode
+      _node: {fileID: 9047991172613304899}
+      _typeQualifiedName: xNodeProject.NodeModule.Empty, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2321318804941696078}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: canGoBack
+      _node: {fileID: 9047991172613304899}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  situationDescription: You decide to take a shower, but there is no hot water. What
+    will you do?
+  firstChoice: Shower with cold water
+  secondChoice: Go eat breakfast instead
+  canGoBack: 1
