@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,9 +16,10 @@ namespace xNodeProject.GraphModule
         public CardNode current;
         public event Action<CardNode> OnCardChange;
 
-        public void Awake()
+        public void StartGraph()
         {
-            current = nodes[0] as CardNode;
+            //current = nodes[0] as CardNode;
+            current = GetFirstNode() as CardNode;
             OnCardChange?.Invoke(current);
         }
 
@@ -30,5 +32,7 @@ namespace xNodeProject.GraphModule
         {
             if(current.CanMoveBackwards()) OnCardChange?.Invoke(current);
         }
+
+        public Node GetFirstNode() => nodes.OrderBy(n => n.position).First();
     }
 }
