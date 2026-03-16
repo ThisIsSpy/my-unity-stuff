@@ -3,30 +3,30 @@ using UnityEngine;
 public class Repository
 {
     private readonly IFileSaver fileSaver;
-    private readonly IFeatureSaver[] savers;
+    private readonly IDataConverter[] dataConverters;
     
-    public Repository(IFileSaver fileSaver, IFeatureSaver[] savers)
+    public Repository(IFileSaver fileSaver, IDataConverter[] savers)
     {
         this.fileSaver = fileSaver;
-        this.savers = savers;
+        this.dataConverters = savers;
     }
 
     public void Save()
     {
-        foreach (var s in savers)
+        foreach (var s in dataConverters)
         {
-            fileSaver.Save(GetKey(s), s.Save());
+            fileSaver.Save(GetKey(s), s.Convert());
         }
     }
 
     public void Load()
     {
-        foreach (var s in savers)
+        foreach (var s in dataConverters)
         {
             string data = fileSaver.Load(GetKey(s));
-            if (data != null && data != string.Empty) s.Load(data);
+            if (data != null && data != string.Empty) s.Unconvert(data);
         }
     }
 
-    private string GetKey(IFeatureSaver saver) => saver.GetType().Name;
+    private string GetKey(IDataConverter saver) => saver.GetType().Name;
 }

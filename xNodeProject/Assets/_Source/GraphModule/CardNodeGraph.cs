@@ -33,6 +33,14 @@ namespace xNodeProject.GraphModule
             if(current.CanMoveBackwards()) OnCardChange?.Invoke(current);
         }
 
-        public Node GetFirstNode() => nodes.OrderBy(n => n.position).First();
+        public Node GetFirstNode()
+        {
+            IEnumerable sortedNodes = nodes.OrderBy(n => n.position);
+            foreach(Node node in sortedNodes)
+            {
+                if(node is CardNode cardNode && (cardNode.firstChoiceNextNode != null && cardNode.secondChoiceNextNode != null)) return node;
+            }
+            return null;
+        }
     }
 }

@@ -8,20 +8,20 @@ public class Bootstrapper : MonoBehaviour
     [SerializeField] private TimedSaver timedSaver;
     [SerializeField] private OnQuitSaver onQuitSaver;
 
-    private TimerSaver timerSaver;
-    private ScoreSaver scoreSaver;
+    private TimerDataConverter timerDataConverter;
+    private ScoreDataConverter scoreDataConverter;
     private Repository repository;
     private PlayerPrefsSaver playerPrefsSaver;
 
     private void Start()
     {
-        timerSaver = new(timer);
-        scoreSaver = new(score);
+        timerDataConverter = new(timer);
+        scoreDataConverter = new(score);
         playerPrefsSaver = new();
-        List<IFeatureSaver> featureSavers = new()
+        List<IDataConverter> featureSavers = new()
         {
-            scoreSaver,
-            timerSaver
+            scoreDataConverter,
+            timerDataConverter
         };
         repository = new(playerPrefsSaver, featureSavers.ToArray());
         timedSaver.Construct(repository);
