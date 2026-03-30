@@ -1,6 +1,6 @@
-﻿using R3;
-using System.Collections;
-using System.Collections.Generic;
+﻿using ImprovedTimers;
+using R3;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,13 +15,22 @@ namespace PlayerSystem.UI
         [Header("UI Stuff")]
         [SerializeField] private TextMeshProUGUI manaLabel;
         [SerializeField] private Button castSpellButton, restoreManaButton;
+        private CountdownTimer spellTimer;
+        private readonly ReactiveProperty<bool> isSpellReady = new(true);
 
         private void Start()
         {
             playerMana.CurrentMana.Subscribe(UpdateUI).AddTo(this);
-            playerMana.CurrentMana.Select(x => (float)x / playerMana.MaxMana.CurrentValue > playerMana.LowManaThreshold && playerHealth.CurrentHP.CurrentValue > 0).Subscribe(castSpellButton.gameObject.SetActive).AddTo(this);
             castSpellButton.onClick.AddListener(CastSpell);
             restoreManaButton.onClick.AddListener(RestoreMana);
+
+            spellTimer = new(playerMana.SpellCooldownTime);
+            spellTimer.OnTimerStart += () => isSpellReady.Value = false;
+            spellTimer.OnTimerStop += () => isSpellReady.Value = spellTimer.IsFinished;
+
+            Observable.CombineLatest(playerHealth.CurrentHP, playerMana.CurrentMana, isSpellReady, 
+                (hp, mana, ready) => hp > 0 && mana >= playerMana.SpellCost && (float)mana / playerMana.MaxMana.CurrentValue > playerMana.LowManaThreshold && ready)
+                .Subscribe(castSpellButton.gameObject.SetActive).AddTo(this);
         }
 
         private void OnDestroy()
@@ -34,9 +43,11 @@ namespace PlayerSystem.UI
 
         private void CastSpell()
         {
+            if (!isSpellReady.CurrentValue) return;
             if (playerMana.CurrentMana.CurrentValue < playerMana.SpellCost) return;
-            Debug.Log("spell cast");
             playerMana.SetCurrentMana(playerMana.CurrentMana.CurrentValue - playerMana.SpellCost);
+            spellTimer.Reset();
+            spellTimer.Start();
         }
 
         private void RestoreMana() => playerMana.SetCurrentMana(playerMana.CurrentMana.CurrentValue + manaRestoreAmount);

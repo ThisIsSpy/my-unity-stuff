@@ -2344,6 +2344,7 @@ MonoBehaviour:
     value: 100
   <LowManaThreshold>k__BackingField: 0.2
   <SpellCost>k__BackingField: 20
+  <SpellCooldownTime>k__BackingField: 5
 --- !u!114 &1564004370
 MonoBehaviour:
   m_ObjectHideFlags: 0

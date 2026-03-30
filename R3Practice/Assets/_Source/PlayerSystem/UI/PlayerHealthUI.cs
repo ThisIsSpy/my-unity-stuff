@@ -20,6 +20,7 @@ namespace PlayerSystem.UI
             playerHealth.CurrentHP.Subscribe(UpdateUI).AddTo(this);
             playerHealth.CurrentHP.Select(hp => (float)hp / playerHealth.MaxHP.CurrentValue < playerHealth.LowHPThreshold).Subscribe(lowHPWarningSign.gameObject.SetActive).AddTo(this);
             playerHealth.CurrentHP.Select(hp => hp < 1).Subscribe(gameOverScreen.gameObject.SetActive).AddTo(this);
+            playerHealth.CurrentHP.Select(hp => (float)hp / playerHealth.MaxHP.CurrentValue < playerHealth.LowHPThreshold).Subscribe(RecolorUI).AddTo(this);
             playerHealth.MedkitAmount.Subscribe(x => medkitsAmountLabel.text = $"{x} medkits left").AddTo(this);
             playerHealth.MedkitAmount.Select(value => value > 0).Subscribe(healButton.gameObject.SetActive).AddTo(this);
             healButton.onClick.AddListener(UseMedkit);
@@ -33,6 +34,11 @@ namespace PlayerSystem.UI
         }
 
         private void UpdateUI(int _) => healthLabel.text = $"{playerHealth.CurrentHP.CurrentValue}/{playerHealth.MaxHP.CurrentValue} HP";
+        private void RecolorUI(bool isDanger)
+        {
+            if (isDanger) healthLabel.color = Color.red;
+            else healthLabel.color = Color.white;
+        }
 
         private void UseMedkit()
         {

@@ -11,6 +11,7 @@ namespace PlayerSystem
         [SerializeField] private SerializableReactiveProperty<int> currentMana = new(100);
         [field: Range(0.1f, 0.99f), SerializeField] public float LowManaThreshold { get; private set; }
         [field: SerializeField] public int SpellCost { get; private set; }
+        [field: SerializeField] public float SpellCooldownTime { get; private set; }
         public ReadOnlyReactiveProperty<int> MaxMana => maxMana;
         public ReadOnlyReactiveProperty<int> CurrentMana => currentMana;
 
